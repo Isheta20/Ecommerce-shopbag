@@ -56,9 +56,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
         })
     }
 
-    const lowtohigh = document.querySelectorAll("option")[1];
-    lowtohigh.addEventListener('click', ()=>{
-        
+    const filterselect = document.getElementById("filterselect");
+    filterselect.addEventListener('change', ()=>{
+        const selection = filterselect.value;
+        console.log(selection);
+        if(selection == 'LowToHigh'){
+            apiData.sort((a,b)=>a.price-b.price);
+            // console.log(apiData);
+            displayResults(apiData);
+        }
+        else if(selection == 'HighToLow'){
+            apiData.sort((a,b)=>b.price-a.price);
+            // console.log(apiData);
+            displayResults(apiData);
+        }
     })
 })
 
